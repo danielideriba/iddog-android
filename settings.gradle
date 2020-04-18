@@ -1,0 +1,2 @@
+rootProject.name='iddog-android'
+include ':app'
