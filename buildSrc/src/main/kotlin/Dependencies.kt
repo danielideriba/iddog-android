@@ -1,3 +1,5 @@
+import org.gradle.api.artifacts.dsl.DependencyHandler
+
 const val kotlinVersion = "1.3.21"
 
 object BuildPlugins {
@@ -6,12 +8,14 @@ object BuildPlugins {
         const val buildToolsVersion = "3.3.1"
     }
 
-    const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
-    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-    const val androidApplication = "com.android.application"
-    const val kotlinAndroid = "kotlin-android"
-    const val kotlinAndroidExtensions = "kotlin-android-extensions"
-
+    const val androidGradlePlugin       = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
+    const val kotlinGradlePlugin        = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    const val androidApplication        = "com.android.application"
+    const val kotlinAndroid             = "kotlin-android"
+    const val kotlinAndroidExtensions   = "kotlin-android-extensions"
+    const val kapt                      = "kotlin-kapt"
+    const val firebaseService           = "com.google.gms:google-services:4.3.3"
+    const val firebaseServiceAppLevel   = "com.google.gms:google-services"
 }
 
 object AndroidSdk {
@@ -29,20 +33,28 @@ object Libraries {
     const val MATERIAL                      = "com.google.android.material:material:${Versions.MATERIAL}"
     const val OKHTTP_LOGGER                 = "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP3}"
     const val DAGGER                        = "com.google.dagger:dagger:${Versions.DAGGER2}"
-    const val DAGGER_COMPILER               = "com.google.dagger:dagger-compiler:${Versions.DAGGER2}"
     const val DAGGER_ANDROID                = "com.google.dagger:dagger-android-support:${Versions.DAGGER2}"
+    const val DAGGER_COMPILER               = "com.google.dagger:dagger-compiler:${Versions.DAGGER2}"
     const val DAGGER_ANDROID_PROCESSOR      = "com.google.dagger:dagger-android-processor:${Versions.DAGGER2}"
     const val FIREBASE_CORE                 = "com.google.firebase:firebase-core:${Versions.Firebase.CORE}"
+    const val FIREBASE_AUTH                 = "com.google.firebase:firebase-auth:${Versions.Firebase.AUTH}"
     const val RETROFIT                      = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
     const val RETROFIT_CONVERTER_GSON       = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT}"
     const val ANDROID_LIFECYCLE_RUNTIME     = "androidx.lifecycle:lifecycle-runtime:${Versions.Androidx.LIFECYCLE}"
     const val ANDROID_LIFECYCLE_VIEWMODEL   = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Androidx.LIFECYCLE}"
     const val ANDROID_LIFECYCLE_EX          = "androidx.lifecycle:lifecycle-extensions:${Versions.Androidx.LIFECYCLE}"
     const val ANDROID_LIFECYCLE_LIVEDATA    = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Androidx.LIFECYCLE}"
-
+    const val STETHO                        = "com.facebook.stetho:stetho:${Versions.STETHO}"
+    const val STETHO_OKHTTP                 =  "com.facebook.stetho:stetho-okhttp3:${Versions.STETHO}"
     const val GLIDE                         = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
     const val GLIDE_ANNOTATION              = "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
+    const val GLIDE_OKHTTP3                 = "com.github.bumptech.glide:okhttp3-integration:${Versions.GLIDE}"
     const val TIMBER                        = "com.jakewharton.timber:timber:${Versions.TIMBER}"
+    const val RXJAVA                        = "io.reactivex.rxjava2:rxjava:${Versions.RX.RXJAVA}"
+    const val RXANDROID                     = "io.reactivex.rxjava2:rxandroid:${Versions.RX.RXANDROID}"
+    const val RXJAVA_ADAPTER                = "com.squareup.retrofit2:adapter-rxjava2:${Versions.RX.RXJAVA_ADAPTER}"
+
+    const val ANDROIDX_LEGACY               = "androidx.legacy:legacy-support-v4:1.0.0"
 }
 
 object TestLibraries {

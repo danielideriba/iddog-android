@@ -1,5 +1,4 @@
-<resources>
-
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -16,5 +15,40 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Login -->
+    <style name="tutorial_subtitles">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">fill_vertical|fill_horizontal</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="cadastro_edit_text">
+        <item name="android:layout_width">270dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical|center_horizontal</item>
+        <item name="android:ems">10</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:maxLength">30</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="default_button_normal_state">
+        <item name="android:layout_gravity">bottom|center_horizontal</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:background">@drawable/menu_button</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@color/textColorButton</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 
 </resources>

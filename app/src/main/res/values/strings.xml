@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">iddog-android</string>
+    <string name="app_name">iddog</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="cadastro_id">Digite seu email</string>
+    <string name="cadastro_id_hint">E-mail</string>
+    <string name="login_button">LOGIN</string>
+    <string name="register_button">CADASTRAR</string>
 </resources>
