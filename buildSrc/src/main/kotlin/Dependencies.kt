@@ -1,11 +1,11 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
-const val kotlinVersion = "1.3.21"
+const val kotlinVersion = "1.3.20"
 
 object BuildPlugins {
 
     object Versions {
-        const val buildToolsVersion = "3.3.1"
+        const val buildToolsVersion = "3.3.2"
     }
 
     const val androidGradlePlugin       = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
@@ -33,7 +33,7 @@ object Libraries {
     const val MATERIAL                      = "com.google.android.material:material:${Versions.MATERIAL}"
     const val OKHTTP_LOGGER                 = "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP3}"
     const val DAGGER                        = "com.google.dagger:dagger:${Versions.DAGGER2}"
-    const val DAGGER_ANDROID                = "com.google.dagger:dagger-android-support:${Versions.DAGGER2}"
+    const val DAGGER_ANDROID                = "com.google.dagger:dagger-android-support:${Versions.DAGGER2_SUPPORT}"
     const val DAGGER_COMPILER               = "com.google.dagger:dagger-compiler:${Versions.DAGGER2}"
     const val DAGGER_ANDROID_PROCESSOR      = "com.google.dagger:dagger-android-processor:${Versions.DAGGER2}"
     const val FIREBASE_CORE                 = "com.google.firebase:firebase-core:${Versions.Firebase.CORE}"
@@ -54,6 +54,7 @@ object Libraries {
     const val RXANDROID                     = "io.reactivex.rxjava2:rxandroid:${Versions.RX.RXANDROID}"
     const val RXJAVA_ADAPTER                = "com.squareup.retrofit2:adapter-rxjava2:${Versions.RX.RXJAVA_ADAPTER}"
 
+    const val MULTIDEX                      = "com.android.support:multidex:${Versions.MULTIDEX}"
     const val ANDROIDX_LEGACY               = "androidx.legacy:legacy-support-v4:1.0.0"
 }
 

@@ -1,11 +1,13 @@
 object Versions {
     const val MATERIAL = "1.0.0"
     const val DAGGER2 = "2.16"
+    const val DAGGER2_SUPPORT = "2.15"
     const val TIMBER = "4.7.1"
     const val RETROFIT = "2.7.1"
     const val OKHTTP3 = "4.3.1"
-    const val GLIDE = "4.11.0"
+    const val GLIDE = "4.8.0"
     const val STETHO = "1.5.1"
+    const val MULTIDEX = "1.0.3"
 
     object Firebase {
         const val CORE = "17.2.2"

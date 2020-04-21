@@ -16,8 +16,12 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
 
         buildConfigFields
+    }
+    kapt {
+        correctErrorTypes = false
     }
     buildTypes {
         getByName("debug") {
@@ -53,9 +57,7 @@ dependencies {
     implementation(Libraries.ANDROID_LIFECYCLE_LIVEDATA)
     implementation(Libraries.ANDROID_LIFECYCLE_RUNTIME)
     implementation(Libraries.ANDROID_LIFECYCLE_VIEWMODEL)
-    implementation(Libraries.DAGGER)
-    implementation(Libraries.DAGGER_ANDROID)
-    implementation(Libraries.FIREBASE_CORE)
+//    implementation(Libraries.FIREBASE_CORE)
     implementation(Libraries.OKHTTP_LOGGER)
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)
@@ -70,8 +72,12 @@ dependencies {
     implementation(Libraries.RXJAVA_ADAPTER)
     implementation(Libraries.ANDROIDX_LEGACY)
 
+    implementation(Libraries.DAGGER)
     kapt(Libraries.DAGGER_ANDROID_PROCESSOR)
     kapt(Libraries.DAGGER_COMPILER)
+    implementation(Libraries.DAGGER_ANDROID)
+
+    implementation(Libraries.MULTIDEX)
 
     annotationProcessor(Libraries.DAGGER_ANDROID_PROCESSOR)
     annotationProcessor(Libraries.DAGGER_COMPILER)
@@ -82,5 +88,5 @@ dependencies {
     androidTestImplementation(TestLibraries.ESPRESSO)
 }
 
-//apply(plugin = "org.jetbrains.kotlin.kapt")
-apply(plugin = "com.google.gms.google-services")
+apply(plugin = "org.jetbrains.kotlin.kapt")
+//apply(plugin = "com.google.gms.google-services")

@@ -7,19 +7,21 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import br.android.iddog.R
+import javax.inject.Inject
 
 /**
  * A placeholder fragment containing a simple view.
  */
 class PlaceholderFragment : Fragment() {
-
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var pageViewModel: PageViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        pageViewModel = ViewModelProviders.of(this).get(PageViewModel::class.java).apply {
+        pageViewModel = ViewModelProvider(this, viewModelFactory).get(PageViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
     }
@@ -30,9 +32,10 @@ class PlaceholderFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_main, container, false)
         val textView: TextView = root.findViewById(R.id.section_label)
-        pageViewModel.text.observe(this, Observer<String> {
+        pageViewModel.text.observe(viewLifecycleOwner, Observer<String> {
             textView.text = it
         })
+
         return root
     }
 
