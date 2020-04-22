@@ -3,19 +3,13 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 const val kotlinVersion = "1.3.20"
 
 object BuildPlugins {
-
-    object Versions {
-        const val buildToolsVersion = "3.3.2"
-    }
-
-    const val androidGradlePlugin       = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
+    const val androidGradlePlugin       = "com.android.tools.build:gradle:${Versions.BUILDTOOLVERSION}"
     const val kotlinGradlePlugin        = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     const val androidApplication        = "com.android.application"
     const val kotlinAndroid             = "kotlin-android"
     const val kotlinAndroidExtensions   = "kotlin-android-extensions"
     const val kapt                      = "kotlin-kapt"
-    const val firebaseService           = "com.google.gms:google-services:4.3.3"
-    const val firebaseServiceAppLevel   = "com.google.gms:google-services"
+    const val firebaseService           = "com.google.gms:google-services:${Versions.Firebase.SERVICE}"
 }
 
 object AndroidSdk {
@@ -38,6 +32,7 @@ object Libraries {
     const val DAGGER_ANDROID_PROCESSOR      = "com.google.dagger:dagger-android-processor:${Versions.DAGGER2}"
     const val FIREBASE_CORE                 = "com.google.firebase:firebase-core:${Versions.Firebase.CORE}"
     const val FIREBASE_AUTH                 = "com.google.firebase:firebase-auth:${Versions.Firebase.AUTH}"
+    const val FIREBASE_DATABASE             = "com.google.firebase:firebase-database:${Versions.Firebase.DATABASE}"
     const val RETROFIT                      = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
     const val RETROFIT_CONVERTER_GSON       = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT}"
     const val ANDROID_LIFECYCLE_RUNTIME     = "androidx.lifecycle:lifecycle-runtime:${Versions.Androidx.LIFECYCLE}"
@@ -55,7 +50,7 @@ object Libraries {
     const val RXJAVA_ADAPTER                = "com.squareup.retrofit2:adapter-rxjava2:${Versions.RX.RXJAVA_ADAPTER}"
 
     const val MULTIDEX                      = "com.android.support:multidex:${Versions.MULTIDEX}"
-    const val ANDROIDX_LEGACY               = "androidx.legacy:legacy-support-v4:1.0.0"
+    const val ANDROIDX_LEGACY               = "androidx.legacy:legacy-support-v4:${Versions.ANDROIDX_LEGACY}"
 }
 
 object TestLibraries {

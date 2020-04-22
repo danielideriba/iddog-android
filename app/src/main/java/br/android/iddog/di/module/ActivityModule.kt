@@ -1,5 +1,7 @@
 package br.android.iddog.di.module
 
+import br.android.iddog.ui.login.LoginActivity
+import br.android.iddog.ui.login.SignupActivity
 import br.android.iddog.ui.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -15,4 +17,10 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityModule {
     @ContributesAndroidInjector(modules = arrayOf(FragmentModule::class))
     internal abstract fun contributeMainActivity(): MainActivity
+
+    @ContributesAndroidInjector(modules = arrayOf(FragmentModule::class))
+    internal abstract fun contributeLoginActivity(): LoginActivity
+
+    @ContributesAndroidInjector(modules = arrayOf(FragmentModule::class))
+    internal abstract fun contributeSignupActivity(): SignupActivity
 }

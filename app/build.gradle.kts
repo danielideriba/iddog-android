@@ -5,6 +5,7 @@ plugins {
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
     id(BuildPlugins.kapt)
+//    id(BuildPlugins.firebaseService)
 }
 
 android {
@@ -26,12 +27,12 @@ android {
     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false
-            buildConfigField("String", "API_URL", "\"https://dog.ceo/api\"")
+            buildConfigField("String", "API_URL", "\"https://dog.ceo/api/\"")
         }
         getByName("release") {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-            buildConfigField("String", "API_URL", "\"https://dog.ceo/api\"")
+            buildConfigField("String", "API_URL", "\"https://dog.ceo/api/\"")
         }
     }
 
@@ -57,14 +58,17 @@ dependencies {
     implementation(Libraries.ANDROID_LIFECYCLE_LIVEDATA)
     implementation(Libraries.ANDROID_LIFECYCLE_RUNTIME)
     implementation(Libraries.ANDROID_LIFECYCLE_VIEWMODEL)
-//    implementation(Libraries.FIREBASE_CORE)
     implementation(Libraries.OKHTTP_LOGGER)
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)
 //    implementation(Libraries.GLIDE)
 //    implementation(Libraries.GLIDE_OKHTTP3)
     implementation(Libraries.TIMBER)
+
+//    implementation(Libraries.FIREBASE_CORE)
+    implementation(Libraries.FIREBASE_DATABASE)
     implementation(Libraries.FIREBASE_AUTH)
+
     implementation(Libraries.STETHO)
     implementation(Libraries.STETHO_OKHTTP)
     implementation(Libraries.RXANDROID)
@@ -88,5 +92,4 @@ dependencies {
     androidTestImplementation(TestLibraries.ESPRESSO)
 }
 
-apply(plugin = "org.jetbrains.kotlin.kapt")
-//apply(plugin = "com.google.gms.google-services")
+apply(mapOf("plugin" to "com.google.gms.google-services"))

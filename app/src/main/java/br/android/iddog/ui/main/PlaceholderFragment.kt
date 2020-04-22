@@ -4,39 +4,41 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
+import androidx.annotation.Nullable
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.android.iddog.R
+import br.android.iddog.ui.BaseFragment
+import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 
 /**
  * A placeholder fragment containing a simple view.
  */
-class PlaceholderFragment : Fragment() {
+class PlaceholderFragment: BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var pageViewModel: PageViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        pageViewModel = ViewModelProvider(this, viewModelFactory).get(PageViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
-        }
-    }
+    private lateinit var viewModel: PageViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_main, container, false)
-        val textView: TextView = root.findViewById(R.id.section_label)
-        pageViewModel.text.observe(viewLifecycleOwner, Observer<String> {
-            textView.text = it
+        return inflater.inflate(R.layout.fragment_main, container, false)
+    }
+
+    override fun onActivityCreated(@Nullable savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        this.configureViewModel()
+
+        viewModel.text.observe(viewLifecycleOwner, Observer<String> {
+            section_label.text = it
         })
 
-        return root
+        viewModel.apply {
+            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
+        }
     }
 
     companion object {
@@ -58,5 +60,9 @@ class PlaceholderFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun configureViewModel() {
+        viewModel = ViewModelProvider(this, viewModelFactory).get(PageViewModel::class.java)
     }
 }

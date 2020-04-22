@@ -8,10 +8,14 @@ object Versions {
     const val GLIDE = "4.8.0"
     const val STETHO = "1.5.1"
     const val MULTIDEX = "1.0.3"
+    const val BUILDTOOLVERSION = "3.3.2"
+    const val ANDROIDX_LEGACY = "1.0.0"
 
     object Firebase {
         const val CORE = "17.2.2"
-        const val AUTH = "16.0.5"
+        const val AUTH = "17.0.0"
+        const val SERVICE = "4.3.3"
+        const val DATABASE = "19.2.1"
     }
 
     object Androidx {

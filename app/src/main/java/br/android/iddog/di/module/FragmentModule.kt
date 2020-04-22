@@ -1,7 +1,9 @@
 package br.android.iddog.di.module
 
 import br.android.iddog.ui.login.LoginFragment
+import br.android.iddog.ui.login.SignupFragment
 import br.android.iddog.ui.main.MainFragment
+import br.android.iddog.ui.main.PlaceholderFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -19,5 +21,11 @@ abstract class FragmentModule {
     abstract fun contributeMainFragment(): MainFragment
 
     @ContributesAndroidInjector
+    abstract fun contributePlaceholderFragment(): PlaceholderFragment
+
+    @ContributesAndroidInjector
     abstract fun contributeLoginFragment(): LoginFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeSignupFragment(): SignupFragment
 }

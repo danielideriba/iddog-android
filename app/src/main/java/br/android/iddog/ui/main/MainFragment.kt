@@ -8,6 +8,8 @@ import androidx.annotation.Nullable
 import androidx.lifecycle.ViewModelProvider
 import br.android.iddog.R
 import br.android.iddog.ui.BaseFragment
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import javax.inject.Inject
 
@@ -15,10 +17,6 @@ class MainFragment: BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: MainViewModel
-
-//    lateinit var adapter: CategoryProductAdapter
-//    lateinit var imageAdapter: ImageAdapter
-//    lateinit var bestSellersAdapter: BestSellersAdapter
 
     private  var swipeTimer = Timer()
     private var nextPage = 0
@@ -34,9 +32,10 @@ class MainFragment: BaseFragment() {
         super.onActivityCreated(savedInstanceState)
 
         this.configureViewModel()
-//        this.setBannerData()
-//        this.setCategoryProductsData()
-//        this.setBestSellers()
+        this.configureView()
+    }
+
+    private fun configureView(){
     }
 
     private fun configureViewModel() {

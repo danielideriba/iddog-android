@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.android.iddog.di.key.ViewModelKey
 import br.android.iddog.ui.main.MainViewModel
+import br.android.iddog.ui.main.PageViewModel
 import br.android.iddog.utils.FactoryViewModel
 import dagger.Binds
 import dagger.Module
@@ -16,6 +17,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(repoViewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PageViewModel::class)
+    abstract fun bindPageViewModel(repoViewModel: PageViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: FactoryViewModel): ViewModelProvider.Factory

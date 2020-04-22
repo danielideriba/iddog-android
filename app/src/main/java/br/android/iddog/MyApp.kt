@@ -2,17 +2,21 @@ package br.android.iddog
 
 import android.app.Activity
 import android.app.Application
+import androidx.fragment.app.Fragment
 import br.android.iddog.di.components.DaggerAppComponent
 import com.facebook.stetho.Stetho
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import dagger.android.support.HasSupportFragmentInjector
 import timber.log.Timber
 import javax.inject.Inject
 
-class MyApp: Application(), HasActivityInjector {
+class MyApp: Application(), HasActivityInjector, HasSupportFragmentInjector {
     @Inject
     lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
+    @Inject
+    lateinit var dispatchingFramentInjector: DispatchingAndroidInjector<Fragment>
 
     override fun onCreate() {
         super.onCreate()
@@ -35,4 +39,7 @@ class MyApp: Application(), HasActivityInjector {
         return dispatchingActivityInjector
     }
 
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
+        return dispatchingFramentInjector
+    }
 }

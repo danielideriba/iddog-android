@@ -6,4 +6,22 @@
     <string name="cadastro_id_hint">E-mail</string>
     <string name="login_button">LOGIN</string>
     <string name="register_button">CADASTRAR</string>
+    <string name="editTextEmail">E-mail</string>
+    <string name="editTextPassword">Senha</string>
+    <string name="editTextBtnLogin">Logar</string>
+    <string name="signUpDisclaimer">Ainda não tem conta? Crie uma</string>
+    <string name="textViewSignUpNewUser">Novo Usuário</string>
+    <string name="textViewSignUpName">Nome</string>
+    <string name="textViewSignUpEmail">E-mail</string>
+    <string name="textViewSignUpPassword">Senha</string>
+    <string name="textViewSignUpBtnCreateAccount">Criar</string>
+    <string name="atenttion">Atenção</string>
+    <string name="alert_redirect_update_successful">Usuário atualizado com sucesso!</string>
+    <string name="alert_registred_successful">Usuário cadastrado com sucesso!</string>
+    <string name="alert_login_error_text">Usuário ou senha incorretos</string>
+    <string name="alert_error_create_user">Erro ao criar o usuário</string>
+    <string name="ok">OK</string>
+    <string name="logout">Sair</string>
+    <string name="online_user">Usuário on-line: %1$s</string>
+    <string name="main_sub_title">Cadastre-se no Aplicativo.</string>
 </resources>
