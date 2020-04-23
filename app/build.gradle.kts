@@ -61,8 +61,8 @@ dependencies {
     implementation(Libraries.OKHTTP_LOGGER)
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)
-//    implementation(Libraries.GLIDE)
-//    implementation(Libraries.GLIDE_OKHTTP3)
+    implementation(Libraries.GLIDE)
+    implementation(Libraries.GLIDE_OKHTTP3)
     implementation(Libraries.TIMBER)
 
 //    implementation(Libraries.FIREBASE_CORE)
@@ -85,9 +85,10 @@ dependencies {
 
     annotationProcessor(Libraries.DAGGER_ANDROID_PROCESSOR)
     annotationProcessor(Libraries.DAGGER_COMPILER)
-//    annotationProcessor(Libraries.GLIDE_ANNOTATION)
+    annotationProcessor(Libraries.GLIDE_ANNOTATION)
 
     testImplementation(TestLibraries.JUNIT4)
+    testImplementation(TestLibraries.MOCKITO)
     androidTestImplementation(TestLibraries.TESTRUNNER)
     androidTestImplementation(TestLibraries.ESPRESSO)
 }

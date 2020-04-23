@@ -33,7 +33,7 @@ class LoginFragment: BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater!!.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onActivityCreated(@Nullable savedInstanceState: Bundle?) {
@@ -47,7 +47,7 @@ class LoginFragment: BaseFragment() {
     private fun checkIfAlreadyLogged() {
         if (mAuth.currentUser != null) {
             val user = User(mAuth.currentUser!!.uid, mAuth.currentUser!!.displayName, mAuth.currentUser!!.email)
-            SessionUtils.createSession(view!!.context, user!!)
+            SessionUtils.createSession(view!!.context, user)
 
             goToHome()
         }

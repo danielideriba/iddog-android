@@ -5,7 +5,7 @@ object Versions {
     const val TIMBER = "4.7.1"
     const val RETROFIT = "2.7.1"
     const val OKHTTP3 = "4.3.1"
-    const val GLIDE = "4.8.0"
+    const val GLIDE = "4.11.0"
     const val STETHO = "1.5.1"
     const val MULTIDEX = "1.0.3"
     const val BUILDTOOLVERSION = "3.3.2"
@@ -30,6 +30,13 @@ object Versions {
         const val RXJAVA = "2.1.9"
         const val RXANDROID = "2.0.2"
         const val RXJAVA_ADAPTER = "2.3.0"
+    }
+
+    object Tests {
+        const val JUNIT4 = "4.12"
+        const val TESTRUNNER = "1.1.0-alpha4"
+        const val ESPRESSO = "3.1.0-alpha4"
+        const val MOCKITO = "3.3.9"
     }
 }
 

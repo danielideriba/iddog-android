@@ -36,7 +36,7 @@ class SignupFragment: BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater!!.inflate(R.layout.fragment_signup, container, false)
+        return inflater.inflate(R.layout.fragment_signup, container, false)
     }
 
     override fun onActivityCreated(@Nullable savedInstanceState: Bundle?) {
@@ -68,7 +68,7 @@ class SignupFragment: BaseFragment() {
             .setValue(user)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    SessionUtils.createSession(view!!.context, user!!)
+                    SessionUtils.createSession(view!!.context, user)
                     AlertDialogs.showDialogRedirect(
                         view!!.context,
                         getString(R.string.atenttion),

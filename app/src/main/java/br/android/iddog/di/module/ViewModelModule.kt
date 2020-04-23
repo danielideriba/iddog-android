@@ -19,10 +19,5 @@ abstract class ViewModelModule {
     abstract fun bindMainViewModel(repoViewModel: MainViewModel): ViewModel
 
     @Binds
-    @IntoMap
-    @ViewModelKey(PageViewModel::class)
-    abstract fun bindPageViewModel(repoViewModel: PageViewModel): ViewModel
-
-    @Binds
     abstract fun bindViewModelFactory(factory: FactoryViewModel): ViewModelProvider.Factory
 }

@@ -54,12 +54,8 @@ object Libraries {
 }
 
 object TestLibraries {
-    private object Versions {
-        const val JUNIT4 = "4.12"
-        const val TESTRUNNER = "1.1.0-alpha4"
-        const val ESPRESSO = "3.1.0-alpha4"
-    }
-    const val JUNIT4     = "junit:junit:${Versions.JUNIT4}"
-    const val TESTRUNNER = "androidx.test:runner:${Versions.TESTRUNNER}"
-    const val ESPRESSO   = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO}"
+    const val JUNIT4     = "junit:junit:${Versions.Tests.JUNIT4}"
+    const val TESTRUNNER = "androidx.test:runner:${Versions.Tests.TESTRUNNER}"
+    const val ESPRESSO   = "androidx.test.espresso:espresso-core:${Versions.Tests.ESPRESSO}"
+    const val MOCKITO    = "org.mockito:mockito-core:${Versions.Tests.MOCKITO}"
 }

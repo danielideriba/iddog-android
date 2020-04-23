@@ -3,7 +3,6 @@ package br.android.iddog.ui.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import br.android.iddog.BaseActivity
 import br.android.iddog.R
 import br.android.iddog.ui.login.LoginActivity
@@ -19,11 +18,6 @@ class MainActivity : BaseActivity() {
 
         view_pager.adapter = sectionsPagerAdapter
         tabs.setupWithViewPager(view_pager)
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
 
         this.configView()
     }

@@ -8,18 +8,12 @@ import androidx.annotation.Nullable
 import androidx.lifecycle.ViewModelProvider
 import br.android.iddog.R
 import br.android.iddog.ui.BaseFragment
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 import javax.inject.Inject
 
 class MainFragment: BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: MainViewModel
-
-    private  var swipeTimer = Timer()
-    private var nextPage = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
