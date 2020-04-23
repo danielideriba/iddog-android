@@ -22,6 +22,7 @@
     <string name="alert_registred_successful">Usuário cadastrado com sucesso!</string>
     <string name="alert_login_error_text">Usuário ou senha incorretos</string>
     <string name="alert_error_create_user">Erro ao criar o usuário</string>
+    <string name="alert_error_email">E-mail inválido</string>
     <string name="ok">OK</string>
     <string name="logout">Sair</string>
     <string name="online_user">Usuário on-line: %1$s</string>

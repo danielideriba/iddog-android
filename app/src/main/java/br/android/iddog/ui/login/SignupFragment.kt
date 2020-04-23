@@ -1,12 +1,9 @@
 package br.android.iddog.ui.login
 
-import android.app.Activity.RESULT_OK
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.lifecycle.ViewModelProvider
 import br.android.iddog.R
@@ -15,7 +12,7 @@ import br.android.iddog.ui.BaseFragment
 import br.android.iddog.ui.main.MainActivity
 import br.android.iddog.ui.main.MainViewModel
 import br.android.iddog.utils.AlertDialogs
-import br.android.iddog.utils.SIGNUP_EMAIL
+import br.android.iddog.utils.EmailValidator
 import br.android.iddog.utils.SessionUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -31,6 +28,7 @@ class SignupFragment: BaseFragment() {
 
     private lateinit var mAuth: FirebaseAuth
 
+    private lateinit var mEmailValidator: EmailValidator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,26 +41,50 @@ class SignupFragment: BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         mAuth = FirebaseAuth.getInstance()
         this.configureViewModel()
+        this.addWatchers()
         this.viewActions()
+    }
+
+    private fun addWatchers(){
+        mEmailValidator = EmailValidator()
+        inputEmail.addTextChangedListener(mEmailValidator)
+    }
+
+    private fun resetFields() {
+        inputName.setText("")
+        inputEmail.setText("")
+        inputPassword.setText("")
     }
 
     private fun viewActions(){
         btCreate.setOnClickListener {
-            mAuth.createUserWithEmailAndPassword(
-                inputEmail.text.toString(),
-                inputPassword.text.toString()
-            ).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    saveInRealTimeDatabase()
-                } else {
-                    Timber.d(it.exception?.message)
+            if (mEmailValidator.isValid) {
+                mAuth.createUserWithEmailAndPassword(
+                    inputEmail.text.toString(),
+                    inputPassword.text.toString()
+                ).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        saveInRealTimeDatabase()
+                    } else {
+                        this.resetFields()
+                        AlertDialogs.showDialog(
+                            view!!.context,
+                            getString(R.string.alert_error_create_user)
+                        )
+                    }
                 }
+            } else {
+                this.resetFields()
+                AlertDialogs.showDialog(
+                    view!!.context,
+                    getString(R.string.alert_error_email)
+                )
             }
         }
     }
 
     private fun saveInRealTimeDatabase() {
-        val user = User("", inputName.text.toString(), inputEmail.text.toString())
+        val user = User(FirebaseAuth.getInstance().currentUser!!.uid, inputName.text.toString(), inputEmail.text.toString())
         FirebaseDatabase.getInstance().getReference("Users")
             .child(FirebaseAuth.getInstance().currentUser!!.uid)
             .setValue(user)
@@ -73,7 +95,7 @@ class SignupFragment: BaseFragment() {
                         view!!.context,
                         getString(R.string.atenttion),
                         getString(R.string.alert_registred_successful)
-                    ).setPositiveButton(R.string.ok) { dialog, which ->
+                    ).setPositiveButton(R.string.ok) { _, _ ->
                         val intent = MainActivity.newIntent(view!!.context)
                         startActivity(intent)
                         activity!!.finish()
@@ -84,7 +106,7 @@ class SignupFragment: BaseFragment() {
                         view!!.context,
                         getString(R.string.atenttion),
                         getString(R.string.alert_error_create_user)
-                    ).setPositiveButton(R.string.ok) { dialog, which ->
+                    ).setPositiveButton(R.string.ok) { _, _ ->
                         false
                     }.create().show()
                 }

@@ -23,8 +23,6 @@ class DogsRepository
     fun getBreedImage(dogBreed: String, callback: RepositoryCallback) {
         dogAPIService.getDogBreedImage(dogBreed).enqueue(object : Callback<BreedImage> {
             override fun onResponse(call: Call<BreedImage>, response: Response<BreedImage>) {
-                Timber.d("---"+response.body())
-
                 callback.onSuccess(response.body())
             }
 

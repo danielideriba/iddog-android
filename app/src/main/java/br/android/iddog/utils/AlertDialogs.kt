@@ -17,7 +17,7 @@ object AlertDialogs {
         AlertDialog.Builder(context)
             .setTitle(context.resources.getString(R.string.atenttion))
             .setMessage(msg)
-            .setPositiveButton(context.resources.getString(R.string.ok)) { dialog, which ->
+            .setPositiveButton(context.resources.getString(R.string.ok)) { _, _ ->
                 false
             }
             .setCancelable(false)

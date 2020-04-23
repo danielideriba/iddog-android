@@ -13,12 +13,14 @@ import br.android.iddog.di.module.User
 import br.android.iddog.ui.BaseFragment
 import br.android.iddog.ui.main.MainViewModel
 import br.android.iddog.utils.AlertDialogs
+import br.android.iddog.utils.EmailValidator
 import br.android.iddog.utils.SIGNUP_EMAIL
 import br.android.iddog.utils.SessionUtils
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 import javax.inject.Inject
+
 
 class LoginFragment: BaseFragment() {
 
@@ -28,6 +30,8 @@ class LoginFragment: BaseFragment() {
 
     private lateinit var mAuth: FirebaseAuth
     private val newUserRequestCode = 1
+
+    private lateinit var mEmailValidator: EmailValidator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +45,7 @@ class LoginFragment: BaseFragment() {
         mAuth = FirebaseAuth.getInstance()
         this.configureViewModel()
         this.checkIfAlreadyLogged()
+        this.addWatchers()
         this.viewActions()
     }
 
@@ -53,17 +58,42 @@ class LoginFragment: BaseFragment() {
         }
     }
 
+    private fun addWatchers(){
+        mEmailValidator = EmailValidator()
+        inputLoginEmail.addTextChangedListener(mEmailValidator)
+    }
+
+    private fun resetFields() {
+        inputLoginEmail.setText("")
+        inputLoginPassword.setText("")
+    }
+
     private fun viewActions(){
         btLogin.setOnClickListener {
-            mAuth.signInWithEmailAndPassword(
-                inputLoginEmail.text.toString(),
-                inputLoginPassword.text.toString()
-            ).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    goToHome()
-                } else {
-                    AlertDialogs.showDialog(view!!.context, getString(R.string.alert_login_error_text))
+            if (mEmailValidator.isValid) {
+                mAuth.signInWithEmailAndPassword(
+                    inputLoginEmail.text.toString(),
+                    inputLoginPassword.text.toString()
+                ).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val user = User(it.result!!.user.uid, it.result!!.user.email, it.result!!.user.email)
+                        SessionUtils.createSession(view!!.context, user)
+
+                        goToHome()
+                    } else {
+                        this.resetFields()
+                        AlertDialogs.showDialog(
+                            view!!.context,
+                            getString(R.string.alert_login_error_text)
+                        )
+                    }
                 }
+            } else {
+                this.resetFields()
+                AlertDialogs.showDialog(
+                    view!!.context,
+                    getString(R.string.alert_error_email)
+                )
             }
         }
 

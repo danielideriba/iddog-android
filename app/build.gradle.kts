@@ -30,7 +30,7 @@ android {
             buildConfigField("String", "API_URL", "\"https://dog.ceo/api/\"")
         }
         getByName("release") {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             buildConfigField("String", "API_URL", "\"https://dog.ceo/api/\"")
         }
@@ -88,7 +88,6 @@ dependencies {
     annotationProcessor(Libraries.GLIDE_ANNOTATION)
 
     testImplementation(TestLibraries.JUNIT4)
-    testImplementation(TestLibraries.MOCKITO)
     androidTestImplementation(TestLibraries.TESTRUNNER)
     androidTestImplementation(TestLibraries.ESPRESSO)
 }

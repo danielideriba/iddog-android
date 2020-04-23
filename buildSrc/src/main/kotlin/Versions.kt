@@ -36,7 +36,6 @@ object Versions {
         const val JUNIT4 = "4.12"
         const val TESTRUNNER = "1.1.0-alpha4"
         const val ESPRESSO = "3.1.0-alpha4"
-        const val MOCKITO = "3.3.9"
     }
 }
 

@@ -54,8 +54,7 @@ object Libraries {
 }
 
 object TestLibraries {
-    const val JUNIT4     = "junit:junit:${Versions.Tests.JUNIT4}"
+    const val JUNIT4 = "junit:junit:${Versions.Tests.JUNIT4}"
     const val TESTRUNNER = "androidx.test:runner:${Versions.Tests.TESTRUNNER}"
-    const val ESPRESSO   = "androidx.test.espresso:espresso-core:${Versions.Tests.ESPRESSO}"
-    const val MOCKITO    = "org.mockito:mockito-core:${Versions.Tests.MOCKITO}"
+    const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.Tests.ESPRESSO}"
 }

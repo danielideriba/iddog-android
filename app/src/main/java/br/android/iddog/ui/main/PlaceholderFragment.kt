@@ -52,7 +52,7 @@ class PlaceholderFragment: BaseFragment() {
 
     private fun configureTabAndGet(dogBreed: String){
         viewModel.getOneBreedImage(dogBreed)
-        viewModel?.dataModel?.observe(viewLifecycleOwner, Observer { results ->
+        viewModel.dataModel.observe(viewLifecycleOwner, Observer { results ->
             results?.let {
                 Glide.with(this)
                     .load(it.message)

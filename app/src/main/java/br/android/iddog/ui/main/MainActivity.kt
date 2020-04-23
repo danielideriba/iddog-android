@@ -6,8 +6,11 @@ import android.os.Bundle
 import br.android.iddog.BaseActivity
 import br.android.iddog.R
 import br.android.iddog.ui.login.LoginActivity
+import br.android.iddog.utils.SessionUtils
+import br.android.iddog.utils.USER_COLUMN_IDTOKEN
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 class MainActivity : BaseActivity() {
 
@@ -25,7 +28,7 @@ class MainActivity : BaseActivity() {
     private fun configView(){
         btnLogout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
-
+            SessionUtils.resetSession(this)
             val intent = LoginActivity.newIntent(this)
             startActivity(intent)
             finish()

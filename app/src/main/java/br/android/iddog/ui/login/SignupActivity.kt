@@ -39,20 +39,6 @@ class SignupActivity: BaseActivity() {
         }
     }
 
-    fun createUser(email: String, password: String) {
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener{ task ->
-            if(task.isSuccessful){
-                Timber.d("Successfully Registered")
-
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                Timber.d("Registration Failed")
-            }
-        })
-    }
-
     companion object {
         fun newIntent(context: Context): Intent {
             val intent = Intent(context, SignupActivity::class.java)
